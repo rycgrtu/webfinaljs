@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title></title>
+    <style type="text/css"> </style>
+    <script src="lista.js"></script>
+   
+
+
+
+    <style>
+        td{
+            border-collapse: collapse;
+            border: solid 1px black;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="web.html">web</a> <a href="funcionalidades.html">Funcionalidades</a>
+
+    <div>
+        <table id="tablaAñadir" style="border: solid 1px black; border-collapse: collapse;">
+            <tr>
+                <td>Código</td><td>Descripción</td><td>Precio</td><td>Stock</td><td>Ruta img</td>
+            </tr>
+
+            <tr>
+                <td><input type="text" id="añadirCodigo"></td><td><input type="text" id="añadirDescripcion"></td>
+                <td><input type="number" id="añadirPrecio"></td><td><input type="number" id="añadirStock"></td><td><input type="text"  id="añadirImagen"></td>
+            </tr>
+            <tr><td><button id="botonAñadir" onclick="añadirProducto()">Añadir</button></td></tr>
+
+        </table>
+
+        
+        
+    </div>
+<br><br>
+    
+    <div><p>LISTADO DE PRODUCTOS:</p>
+        <table id="tablaListado"></table>
+    </div>
+
+
+
+
+
+    <script src="definicion2.js"></script>
+
+</body>
+
+</html>

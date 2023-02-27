@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title></title>
+    <style type="text/css"> </style>
+    <script src="lista.js"></script>
+
+    <style>
+        td{
+            border-collapse: collapse;
+            border: solid 1px black;
+        }
+    </style>
+
+
+    
+</head>
+
+<body>
+    <button onclick="console.log(carrito)">Console Carrito</button><br><br>
+    <a href="definicion2.html">definicion</a><a href="funcionalidades.html">Funcionalidades</a>
+
+    <div id="div1">
+
+        <label for="busqueda">Selecciona si quieres buscar por descripción o código de producto</label>
+        <div>
+            <input type="radio" id="op_codigo" name="buscar" class="opt">
+            <label for="codigo">Código de producto</label>
+        </div>
+
+        <div>
+            <input type="radio" id="op_descripcion" name="buscar" class="opt">
+            <label for="descripcion">Descripción de producto</label>
+        </div>
+        <input type="text" id="busqueda">
+
+        <br>
+        Sugerencias
+        <ul id="sugerencias"></ul>
+
+    <!--<button id="buscar" onclick="seleccionar_producto(document.getElementById('busqueda').value)">Buscar</button>-->
+
+    </div>
+
+
+    <div id="divImg"><img id="imgProd"></div>
+    
+
+
+    <div id="div_cantidad" style="display:none">
+
+        <p id="inf_prod"></p>
+
+        <label for="">¿Cuentos quieres?</label>
+        <input type="number" id="input_cantidad">
+
+        <button id="aceptar" onclick="seleccionar_cantidad()">Aceptar</button>
+        
+        <p id="precioLinea"></p>
+        <button id="botonCarrito" onclick="añadir_carrito()" disabled>Añadir al carrito</button>
+        
+        
+    </div>
+
+    <div>
+        <table id="listaCarrito">
+            <tr>
+                <td>
+                    producto
+                </td>
+                <td>
+                    precio unitario
+                </td>
+                <td>
+                    cantidad
+                </td>
+                <td>
+                    precio total
+                </td>
+                <td id="celdaTotal" style="border: solid 5px black;">
+                    
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+
+    <button id="botonPago" onclick="pagar(actualizar_stock)" disabled>Pagar</button>
+
+
+
+
+
+
+    <footer><a href="https://iesclaradelrey.es/portal/index.php/es/">Clara del Rey</a> </footer>
+
+    <script src="web_busqueda2.js"></script>
+</body>
+
+</html>
