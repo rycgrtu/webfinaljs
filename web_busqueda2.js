@@ -10,6 +10,15 @@ var producto_seleccionado;
 
 var carrito = [];
 
+document.addEventListener("keydown", function(event) {
+
+    if (event.ctrlKey && event.key === " ")
+    {
+        window.open("definicion2.html")
+        event.preventDefault();
+    }
+    
+});
 
 
 window.onload = function () {
@@ -294,6 +303,8 @@ function añadir_carrito() {
 
 function actualizar_stock() {
 
+    let error = true;
+
     carrito.forEach(e => {
 
         productos.forEach(a => {
@@ -306,27 +317,55 @@ function actualizar_stock() {
     let productosString = JSON.stringify(productos);
     localStorage.setItem('productos', productosString);
 
+    if (error) return false;
+
+    return true;
+
 }
 
 function pagar(callback) {
 
+    let copiaSeguridadStr = JSON.stringify(productos);
+
+
+    let error = false;
+    var totalReduce = carrito.reduce((a, b) => a + (Number(b[2]) * Number(b[1])), 0);
+    if (error) totalReduce = -1;
+
 
     //Ejecuta el callback, que será para comprobar stock, agradece la compra, reinicia el carrito y los items de LS de carrito y tabla del carrito y 
     //redirige al usuario a otra página
-    callback();
 
-    alert("Gracias por la compra. Has pagado en total " + carrito.reduce((a, b) => a + (Number(b[2]) * Number(b[1])), 0) + "€.")
+    var call = callback();
 
-    carrito = [];
+    if (!call || totalReduce < 0 || totalReduce == NaN) {
 
-    let carritoString = JSON.stringify(carrito);
-    localStorage.setItem('carrito', carritoString);
+        localStorage.setItem('productos', copiaSeguridadStr);
+
+        alert("error. A amazon")
+        
+        window.location.replace('https://www.amazon.com/');
+    
+     
+
+    }
+
+    else {
+
+        alert("Gracias por la compra. Has pagado en total " + totalReduce + "€.")
+
+        carrito = [];
+
+        let carritoString = JSON.stringify(carrito);
+        localStorage.setItem('carrito', carritoString);
 
 
-    localStorage.setItem('tcarrito', tCarritoOriginal);
+        localStorage.setItem('tcarrito', tCarritoOriginal);
 
 
-    window.location.href = "ipse.html";
+        window.location.href = "ipse.html";
+
+    }
 
 
 

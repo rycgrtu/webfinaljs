@@ -1,6 +1,7 @@
 const tablaLista = document.getElementById("tablaListado");
 
 window.onload = function () {
+
     //Si no existe un item de localstorage productos, (por ejemplo, la primera vez que se entra a la página) asigna la lista original a la variable 
     //productos (con la que trabjaan todas las funciones), y crea el item en base a esta
     if (localStorage.getItem('productos') == undefined) {
